@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     <!--form starts-->
+
+  <div class="row g-4">
+  <div class="col-sm-12 col-xl-12">
+    
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Add Category</h6>
+        <form class="forms-sample" method="post" action="{% url 'category_update' dataid=data.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Category Name" name="category_name" value="{{data.name}}">
+            <label for="floatingInput">Category Name</label>
+        </div>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Add image</label>
+          <input class="form-control bg-dark" type="file" id="formFile" name="category_image">
+          <img src="{{data.logo.url}}" >
+        </div>
+
+        
+       
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Description" id="floatingTextarea" style="height: 150px;" name="category_description">{{data.description}}</textarea>
+            <label for="floatingTextarea">Description</label>
+        </div><br>
+        <button type="submit" class="btn btn-primary">submit</button>
+        </form>
+    </div>
+</div>
+</div>
+
+
+<!--form ends-->
+</body>
+</html>
+{% endblock %}

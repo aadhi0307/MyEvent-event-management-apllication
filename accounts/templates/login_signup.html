@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'login.css' %}" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+          <div class="title login">Login Form</div>
+          <div class="title signup">Signup Form</div>
+        </div>
+        <div class="form-container">
+          <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+          </div>
+          <div class="form-inner">
+            <form action="{% url 'adminsignin' %}" method="post" class="login" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="field">
+                <input type="text" placeholder="Username" required name="name">
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Password" required name="pwd">
+              </div>
+              <div class="pass-link"><a href="#">Forgot password?</a></div>
+              <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Login">
+              </div>
+              <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+            </form>
+            <form  method="post" action="{% url 'admindata' %}" enctype="multipart/form-data" class="signup">
+              {% csrf_token %}
+              <div class="field">
+                <input type="text" placeholder="Name" required name="name">
+              </div>
+              <div class="field">
+                <input type="email" placeholder="Email Address" required name="email">
+              </div>
+               <div class="field">
+                <input type="text" placeholder="Mobile" required name="mobile">
+              </div>
+               <div class="field">
+                <input type="file" placeholder="Profile pic" required name="image">
+  
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Password" required name="pwd">
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Confirm password" required name="cpwd">
+              </div>
+              <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Signup">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <script src="{% static 'login.js' %}"></script>
+</body>
+</html>

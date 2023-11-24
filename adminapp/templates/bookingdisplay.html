@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+</head>
+<body>
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Bookings</h6>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Rent</th>
+                            <th scope="col">Service name</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        <tr>
+                         <td>{{i.book_name}}</td>
+                         <td>{{i.book_email}}</td>
+                         <td>{{i.book_rent}}</td>
+                         <td>{{i.book_service}}</td>
+                         <td>{{i.book_message}}</td>
+                         <td>{{i.book_date}}</td>
+                         <td>
+                            <form action="{% url 'booking_delete' dataid=i.id %}">
+                                <button type="submit" class="btn btn-danger mr-2">Delete</button>
+                            </form>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                   
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us display</title>
+</head>
+<body>
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Display Contact Us</h6>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        <tr>
+                         <td>{{i.name}}</td>
+                         <td>{{i.email}}</td>
+                         <td>{{i.subject}}</td>
+                         <td>{{i.message}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                   
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
